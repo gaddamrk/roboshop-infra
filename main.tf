@@ -1,4 +1,4 @@
 module "network" {
-  source = "github.com/gaddamrk/tf-module-vpc.git"
+  source = "github.com/gaddamrk/tf-module-vpc"
   version = "main"
 }
