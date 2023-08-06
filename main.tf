@@ -1,4 +1,4 @@
-module "network" {
+module "vpc" {
   source = "github.com/gaddamrk/tf-module-vpc"
   env = var.env
   default_vpc_id = var.default_vpc_id
@@ -7,3 +7,4 @@ module "network" {
   cidr_block = each.value.cidr_block
   subnets_cidr = each.value.subnets_cidr
 }
+
