@@ -17,7 +17,7 @@ module "subnets" {
   vpc_id = module.vpc.vpc_id
   for_each = var.subnets
   cidr_block = each.value.cidr_block
-  availability_zone = each.value.availabiity_zone
+  availability_zone = each.value.availability_zone
   name = each.value.name
 
 }
