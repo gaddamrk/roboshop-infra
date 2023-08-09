@@ -9,3 +9,16 @@ module "vpc" {
 }
 
 
+module "subnets" {
+  source = "github.com/gaddamrk/tf-module-subnets"
+  env = var.env
+  default_vpc_id = var.default_vpc_id
+
+  vpc_id = module.vpc.vpc_id
+  for_each = var.subnets
+  cidr_block = each.value.cidr_block
+  availability_zone = each.value.availabiity_zone
+  name = each.value.name
+
+}
+
