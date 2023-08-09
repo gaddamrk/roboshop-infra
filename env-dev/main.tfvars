@@ -13,7 +13,7 @@ vpc = {
 #}
 
 
-subnet = {
+subnets = {
 
   public = {
 
