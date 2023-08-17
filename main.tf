@@ -13,6 +13,10 @@ module "vpc" {
 
 }
 
+output "out" {
+  value = module.vpc
+}
+
 #
 #module "subnets" {
 #  source = "github.com/gaddamrk/tf-module-subnets"
