@@ -1,45 +1,28 @@
 module "vpc" {
-  source = "github.com/gaddamrk/tf-module-vpc"
-  env = var.env
-  default_vpc_id = var.default_vpc_id
+  source            = "github.com/gaddamrk/tf-module-vpc"
+  env               = var.env
+  default_vpc_id    = var.default_vpc_id
 
-  for_each = var.vpc
-  cidr_block = each.value.cidr_block
+  for_each          = var.vpc
+  cidr_block        = each.value.cidr_block
   public_subnets    = each.value.public_subnets
-  private_subnets    = each.value.private_subnets
+  private_subnet    = each.value.private_subnets
   availability_zone = each.value.availability_zone
 
 
 
 }
 
-output "out" {
-  value = module.vpc
+
+module "docdb" {
+  source            = "github.com/gaddamrk/tf-module-docdb"
+  env               =  var.env
+
+  for_each          =  var.docdb
+  subnet_ids        =  lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+
 }
 
-#
-#module "subnets" {
-#  source = "github.com/gaddamrk/tf-module-subnets"
-#  env = var.env
-#  default_vpc_id = var.default_vpc_id
-#
-#
-#
-#  for_each            = var.subnets
-#  cidr_block          = each.value.cidr_block
-#  availability_zone   = each.value.availability_zone
-#  name                = each.value.name
-#  vpc_id              = lookup(lookup(module.vpc, each.value.vpc_name, null ), "vpc_id", null)
-#  vpc_peering_connection_id = lookup(lookup(module.vpc, each.value.vpc_name, null ), "vpc_peering_connection_id", null)
-##  internet_gw_id = lookup(lookup(module.vpc, each.value.vpc_name, null ), "internet_gw_id", null)
-#
-#  internet_gw = lookup(each.value, "internet_gw", false)
-#  nat_gw = lookup(each.value, "nat_gw", false)
-#
-#
-#}
-#
-#output "vpc_id" {
-#  value = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#}
-#
+output "vpc" {
+  value = "module.vpc"
+}
