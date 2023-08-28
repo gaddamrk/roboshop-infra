@@ -43,6 +43,8 @@ module "rds" {
   instance_class = each.value.instance_class
 
 }
+
+
 output "vpc" {
   value = "module.vpc"
 }
