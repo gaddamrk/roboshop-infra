@@ -45,6 +45,6 @@ module "rds" {
 }
 
 
-output "out" {
+output "vpc" {
   value = module.vpc
 }
