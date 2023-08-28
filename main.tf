@@ -26,7 +26,6 @@ module "docdb" {
   engine_version   = each.value.engine_version
   number_of_instances = each.value.number_of_instances
   instance_class = each.value.instance_class
-  availability_zone = each.value.availability_zone
 
 }
 
