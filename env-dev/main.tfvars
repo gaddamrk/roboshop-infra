@@ -139,6 +139,7 @@ apps = {
     desired_capacity          = 1
     instance_type = "t3.micro"
   }
+
 #  cart = {
 #    component = "cart"
 #    vpc_name = "main"

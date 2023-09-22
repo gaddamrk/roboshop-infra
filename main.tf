@@ -106,6 +106,6 @@ module "apps" {
 }
 
 
-#output "vpc" {
-#  value = lookup(lookup(lookup(lookup(module.vpc, "main", null), "public_subnets", null), "public", null), "subnet_ids", null)
-#}
+output "apps" {
+  value = module.apps
+}
