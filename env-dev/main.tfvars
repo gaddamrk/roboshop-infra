@@ -125,6 +125,7 @@ apps = {
     desired_capacity          = 1
     instance_type = "t3.micro"
   }
+
   user = {
     component = "user"
     vpc_name = "main"
@@ -177,8 +178,6 @@ apps = {
     desired_capacity          = 1
     instance_type = "t3.micro"
   }
-
-
 }
 
 
