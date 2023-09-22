@@ -107,5 +107,5 @@ module "apps" {
 
 
 output "apps" {
-  value = module.apps
+  value = "module.apps"
 }
