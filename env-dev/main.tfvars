@@ -153,6 +153,7 @@ apps = {
     desired_capacity          = 1
     instance_type = "t3.micro"
   }
+
   shipping = {
     component = "shipping"
     vpc_name = "main"
@@ -166,6 +167,7 @@ apps = {
     desired_capacity          = 1
     instance_type = "t3.micro"
   }
+
   payment = {
     component = "payment"
     vpc_name = "main"
